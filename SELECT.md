@@ -1,0 +1,100 @@
+## SELECT
+
+> **SELECT**문은 하나 또는 그 이상의 테이블에서 데이터를 추출하는 SQL의 데이터 조작 언어(DML) 중 하나이다. 이것은 데이터베이스 중 하나 또는 그 이상의 테이블에서 데이터를 추출하기 위한 명령으로 데이터 조작 언어 (DML)에서 가장 많이 사용된다.
+
+
+
+![image-20210429224605463](SELECT.assets/image-20210429224605463.png)
+
+
+
+#### 1. 모든 레코드 조회하기
+
+![image-20210429224635646](SELECT.assets/image-20210429224635646.png)
+
+``` sql
+SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID
+```
+
+![image-20210429224731213](SELECT.assets/image-20210429224731213.png)
+
+
+
+#### 2. 역순 정렬하기
+
+![image-20210429224832361](SELECT.assets/image-20210429224832361.png)
+
+``` sql
+SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC
+```
+
+![image-20210429224906817](SELECT.assets/image-20210429224906817.png)
+
+
+
+#### 3. 아픈 동물 찾기
+
+![image-20210429224948045](SELECT.assets/image-20210429224948045.png)
+
+``` SQL
+SELECT ANIMAL_ID,NAME 
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION = 'Sick'
+ORDER BY ANIMAL_ID
+```
+
+![image-20210429225018240](SELECT.assets/image-20210429225018240.png)
+
+
+
+#### 4. 어린 동물 찾기
+
+![image-20210429225110262](SELECT.assets/image-20210429225110262.png)
+
+``` SQL
+SELECT ANIMAL_ID,NAME 
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION != 'Aged'
+ORDER BY ANIMAL_ID
+```
+
+![image-20210429225136927](SELECT.assets/image-20210429225136927.png)
+
+
+
+#### 5. 동물의 아이디와 이름
+
+![image-20210429225415166](SELECT.assets/image-20210429225415166.png)
+
+``` SQL
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID
+```
+
+![image-20210429225505611](SELECT.assets/image-20210429225505611.png)
+
+
+
+#### 6. 여러 기준으로 정렬하기
+
+![image-20210429225551642](SELECT.assets/image-20210429225551642.png)
+
+``` SQL
+SELECT ANIMAL_ID,NAME,DATETIME FROM ANIMAL_INS
+ORDER BY NAME ASC, DATETIME DESC
+```
+
+![image-20210429225619489](SELECT.assets/image-20210429225619489.png)
+
+
+
+#### 7. 상위 N개 레코드
+
+![image-20210429225703205](SELECT.assets/image-20210429225703205.png)
+
+``` SQL
+SELECT NAME
+FROM (SELECT NAME FROM ANIMAL_INS ORDER BY DATETIME)
+WHERE ROWNUM = 1;
+```
+
+![image-20210429225726308](SELECT.assets/image-20210429225726308.png)
